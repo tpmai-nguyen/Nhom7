@@ -1,6 +1,6 @@
 seaborn
 streamlit
-joblib
+requests
 scikit-learn
 numpy
 pandas
