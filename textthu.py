@@ -10,9 +10,14 @@ import pandas as pd
 import requests
 from io import StringIO
 
-sheet_id = '1L8HOtCvDeGdtLOmWPKrF-5YtkR1ubX-4lnMcaoPZQdU'
-sheet_name = 'Preprocessing data Export'
-url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+url='https://drive.google.com/file/d/1viztnEQaMsATM7efkgprx87ybFXHNQly/view?usp=drive_link'
+
+file_id = url.split('/')[-2]
+dwn_url='https://drive.google.com/uc?export=download&id=' + file_id
+url2 = requests.get(dwn_url).text
+csv_raw = StringIO(url2)
+df = pd.read_csv(csv_raw)
+print(df.head())
 
 headers = {
     "User-Agent": "Mozilla/5.0"
